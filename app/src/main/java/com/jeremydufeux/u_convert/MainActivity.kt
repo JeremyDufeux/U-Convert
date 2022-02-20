@@ -3,36 +3,27 @@ package com.jeremydufeux.u_convert
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import com.jeremydufeux.u_convert.ui.theme.UConvertTheme
+import com.jeremydufeux.u_convert.views.ConverterScreen
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel by viewModels<MainActivityViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            UConvertTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
+            App(viewModel)
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
+fun App(viewModel: MainActivityViewModel) {
     UConvertTheme {
-        Greeting("Android")
+        ConverterScreen(viewModel)
     }
 }

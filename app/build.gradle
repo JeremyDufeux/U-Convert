@@ -24,22 +24,34 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            kotlinOptions {
+                freeCompilerArgs += [
+                        '-Xopt-in=kotlin.RequiresOptIn',
+                ]
+            }
+        }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
         useIR = true
     }
+
     buildFeatures {
         compose true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
         kotlinCompilerVersion '1.5.21'
     }
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -66,4 +78,7 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
 }
