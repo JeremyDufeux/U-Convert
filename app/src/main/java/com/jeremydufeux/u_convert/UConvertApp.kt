@@ -1,6 +1,7 @@
 package com.jeremydufeux.u_convert
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 class UConvertApp: Application() {
