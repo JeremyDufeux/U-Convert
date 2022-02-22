@@ -6,8 +6,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.jeremydufeux.u_convert.models.Universe
 import com.jeremydufeux.u_convert.models.UniverseUi
+import com.jeremydufeux.u_convert.repositories.SavedUniversesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainActivityViewModel : ViewModel() {
+@HiltViewModel
+class MainActivityViewModel @Inject constructor(
+    private val savedUniversesRepository: SavedUniversesRepository
+) : ViewModel() {
     private var universe = Universe()
     var universeUi by mutableStateOf(universe.toUiObject())
     var decimal0TextField by mutableStateOf("0")

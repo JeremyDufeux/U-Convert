@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import com.jeremydufeux.u_convert.ui.theme.UConvertTheme
 import com.jeremydufeux.u_convert.views.ConverterScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModels<MainActivityViewModel>()
