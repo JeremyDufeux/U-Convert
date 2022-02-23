@@ -1,4 +1,4 @@
-package com.jeremydufeux.u_convert.views
+package com.jeremydufeux.u_convert.ui.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

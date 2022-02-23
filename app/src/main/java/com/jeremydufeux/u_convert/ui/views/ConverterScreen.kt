@@ -1,4 +1,4 @@
-package com.jeremydufeux.u_convert.views
+package com.jeremydufeux.u_convert.ui.views
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -24,8 +24,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
-import com.jeremydufeux.u_convert.MainActivityViewModel
 import com.jeremydufeux.u_convert.R
+import com.jeremydufeux.u_convert.ui.activities.MainActivityViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

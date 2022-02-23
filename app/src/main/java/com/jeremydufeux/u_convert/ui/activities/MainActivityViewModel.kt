@@ -1,4 +1,4 @@
-package com.jeremydufeux.u_convert
+package com.jeremydufeux.u_convert.ui.activities
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
