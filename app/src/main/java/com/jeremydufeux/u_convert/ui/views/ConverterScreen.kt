@@ -29,7 +29,7 @@ import com.jeremydufeux.u_convert.ui.activities.MainActivityViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ConverterScreen(viewModel: MainActivityViewModel) {
+fun ConverterScreen(modifier: Modifier, viewModel: MainActivityViewModel) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
@@ -40,7 +40,7 @@ fun ConverterScreen(viewModel: MainActivityViewModel) {
 
     Surface(
         color = MaterialTheme.colors.background,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {

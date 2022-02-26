@@ -10,14 +10,14 @@ import androidx.compose.ui.graphics.Color
 private val DarkColorPalette = darkColors(
     primary = DeepOrange,
     primaryVariant = LightOrange,
-    secondary = Red,
+    secondary = EbonyClay,
     background = BrightGray,
 )
 
 private val LightColorPalette = lightColors(
     primary = DeepOrange,
     primaryVariant = LightOrange,
-    secondary = Red,
+    secondary = EbonyClay,
     background = Color.White,
     /* Other default colors to override
     background = Color.White,
