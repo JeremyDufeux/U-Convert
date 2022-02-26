@@ -4,10 +4,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.jeremydufeux.u_convert.models.Universe
 import com.jeremydufeux.u_convert.models.UniverseUi
 import com.jeremydufeux.u_convert.repositories.SavedUniversesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -116,6 +119,12 @@ class MainActivityViewModel @Inject constructor(
     fun onDecimal1FieldDone() {
         if (decimal1TextField.isBlank()){
             decimal1TextField = universeUi.decimalUniverse1.toString()
+        }
+    }
+
+    fun saveUniverse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            savedUniversesRepository.saveUniverse(universe)
         }
     }
 }

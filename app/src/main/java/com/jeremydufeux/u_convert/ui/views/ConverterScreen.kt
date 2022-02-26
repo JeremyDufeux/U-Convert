@@ -100,6 +100,7 @@ fun ConverterScreen(viewModel: MainActivityViewModel) {
                 Button(
                     onClick = {
                         closeKeyBoard()
+                        viewModel.saveUniverse()
                     },
                     modifier = Modifier
                         .weight(1f)

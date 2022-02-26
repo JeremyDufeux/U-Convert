@@ -18,6 +18,7 @@ class Universe(
         private set
     var artnetUniverse: Int = 0
         private set
+    var label = ""
 
     init {
         updateUniverse()
@@ -29,6 +30,7 @@ class Universe(
         artnetNet = absoluteUniverse / 0x100
         artnetSubnet = (absoluteUniverse / 0x10) % 16
         artnetUniverse = absoluteUniverse % 16
+        label = "Universe $absoluteUniverse"
     }
 
     fun setArtnetNet(newArtnetNet: Int){
