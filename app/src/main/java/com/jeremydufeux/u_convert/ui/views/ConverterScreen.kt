@@ -24,12 +24,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jeremydufeux.u_convert.R
 import com.jeremydufeux.u_convert.ui.activities.MainActivityViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ConverterScreen(modifier: Modifier, viewModel: MainActivityViewModel) {
+fun ConverterScreen(viewModel: MainActivityViewModel = viewModel()) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
@@ -40,7 +41,7 @@ fun ConverterScreen(modifier: Modifier, viewModel: MainActivityViewModel) {
 
     Surface(
         color = MaterialTheme.colors.background,
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {

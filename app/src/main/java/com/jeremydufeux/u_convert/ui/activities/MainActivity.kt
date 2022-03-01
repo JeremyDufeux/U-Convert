@@ -3,58 +3,53 @@ package com.jeremydufeux.u_convert.ui.activities
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import com.jeremydufeux.u_convert.R
 import com.jeremydufeux.u_convert.ui.theme.UConvertTheme
-import com.jeremydufeux.u_convert.ui.views.ConverterScreen
+import com.jeremydufeux.u_convert.ui.views.UConvertAppBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<MainActivityViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App(viewModel)
+            App()
         }
     }
 }
 
 @Composable
-fun App(viewModel: MainActivityViewModel) {
+fun App() {
     UConvertTheme {
+        val allScreen = MainActivityScreen.values().toList()
+        var currentScreen by rememberSaveable { mutableStateOf(MainActivityScreen.Converter)}
+
         Scaffold(
             topBar = {
-                AppBar()
+                UConvertAppBar(
+                    allScreen = allScreen,
+                    onTabSelected = { screen -> currentScreen = screen},
+                    currentScreen = currentScreen
+                )
             },
         ) { innerPadding ->
-            ConverterScreen(
-                Modifier.padding(innerPadding),
-                viewModel)
+            Box(Modifier.padding(innerPadding)){
+                currentScreen.Content(
+                    onScreenChange = { screen ->
+                        currentScreen = MainActivityScreen.valueOf(screen)
+                    }
+                )
+            }
         }
     }
-}
-
-@Composable
-fun AppBar(){
-    TopAppBar(
-        title = {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.h6.copy(color = MaterialTheme.colors.primary,)
-            )
-        },
-        backgroundColor = MaterialTheme.colors.secondary
-    )
 }

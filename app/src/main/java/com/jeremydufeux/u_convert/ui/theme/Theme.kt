@@ -1,5 +1,6 @@
 package com.jeremydufeux.u_convert.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -12,13 +13,16 @@ private val DarkColorPalette = darkColors(
     primaryVariant = LightOrange,
     secondary = EbonyClay,
     background = BrightGray,
+    onSecondary = DeepOrange
 )
 
+@SuppressLint("ConflictingOnColor")
 private val LightColorPalette = lightColors(
     primary = DeepOrange,
     primaryVariant = LightOrange,
-    secondary = EbonyClay,
+    secondary = DeepOrange,
     background = Color.White,
+    onSecondary = Color.White,
     /* Other default colors to override
     background = Color.White,
     surface = Color.White,
